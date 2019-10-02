@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Game from './Components/Game';
 
+let x = 5;
+
 function App() {
   return (
     <div>
