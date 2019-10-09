@@ -33,17 +33,18 @@
 }
 
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font: 14px 'Century Gothic', Futura, sans-serif;
   margin: 20px;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 30px;
 }
 
 .board-row:after {
   clear: both;
-  content: "";
+  content: '';
   display: table;
 }
 
@@ -88,17 +89,17 @@ ol, ul {
   font-size: 100%;
 }
 
-.btnRestart{
+.btnRestart {
   font-size: 100%;
   margin-top: 10px;
   margin-bottom: 30px;
   background-color: violet;
 }
 
-.title{
-  font-size:400%;
+.title {
+  font-size: 400%;
 }
 
-.move-list-selected{
+.move-list-selected {
   font-weight: bold;
 }

@@ -286,7 +286,8 @@ class Game extends React.Component {
         ? `Go to move #${move} (col: ${col}, row: ${row})`
         : 'Go to game start';
       return (
-        <li key={move.id}>
+        // eslint-disable-next-line react/no-array-index-key
+        <li key={move}>
           {/* Bold the currently selected item */}
           <button
             type="button"
