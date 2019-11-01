@@ -26,7 +26,7 @@ function CoCaro(state = initialState, action) {
     case GO_TO_MOVE:
       return {
         ...state,
-        history: state.history.slice(0, action.step + 1),
+        historyTable: state.historyTable.slice(0, action.step + 1),
         stepNumber: action.step,
         xIsNext: action.step % 2 === 0
       };
@@ -47,6 +47,7 @@ function CoCaro(state = initialState, action) {
       };
 
     case SELECT_SQUARE:
+      const i = action.i;
       const { historyTable, stepNumber } = state;
       const history = historyTable.slice(0, stepNumber + 1);
       const current = history[history.length - 1];
@@ -57,7 +58,7 @@ function CoCaro(state = initialState, action) {
       }
       const { xIsNext } = state;
       squares[action.index] = xIsNext ? 'X' : 'O';
-      this.calculateWinner(i);
+      // state = this.calculateWinner(i);
       return {
         ...state,
         historyTable: historyTable.concat([
@@ -74,16 +75,16 @@ function CoCaro(state = initialState, action) {
       return state;
   }
 }
-
+/*
 calculateWinner = i => {
   // check win vertical line
-  this.checkWinVerticalLine(i);
+  state = this.checkWinVerticalLine(i);
   // check win horizontal line
-  this.checkWinHorizontalLine(i);
+  state = this.checkWinHorizontalLine(i);
   // check win first (\) diagonal line
-  this.checkWinFirstDiagonalLine(i);
+  state = this.checkWinFirstDiagonalLine(i);
   // check win second (/) diagonal line
-  this.checkWinSecondDiagonalLine(i);
+  state = this.checkWinSecondDiagonalLine(i);
 };
 
 checkWinVerticalLine = i => {
@@ -123,11 +124,13 @@ checkWinVerticalLine = i => {
   }
   // win
   if (length >= 5 && (!chanDauTren || !chanDauDuoi)) {
-    this.setState({
+    return {
+      ...state,
       winner: squares[i],
       winLine: line
-    });
+    };
   }
+  return state;
 };
 
 checkWinHorizontalLine = i => {
@@ -167,11 +170,13 @@ checkWinHorizontalLine = i => {
   }
   // win
   if (length >= 5 && (!chanDauTrai || !chanDauPhai)) {
-    this.setState({
+    return {
+      ...state,
       winner: squares[i],
       winLine: line
-    });
+    };
   }
+  return state;
 };
 
 checkWinFirstDiagonalLine = i => {
@@ -211,11 +216,13 @@ checkWinFirstDiagonalLine = i => {
   }
   // win
   if (length >= 5 && (!chanDauTren || !chanDauDuoi)) {
-    this.setState({
+    return {
+      ...state,
       winner: squares[i],
       winLine: line
-    });
+    };
   }
+  return state;
 };
 
 checkWinSecondDiagonalLine = i => {
@@ -255,11 +262,13 @@ checkWinSecondDiagonalLine = i => {
   }
   // win
   if (length >= 5 && (!chanDauTren || !chanDauDuoi)) {
-    this.setState({
+    return {
+      ...state,
       winner: squares[i],
       winLine: line
-    });
+    };
   }
+  return state;
 };
-
+*/
 export default CoCaro;

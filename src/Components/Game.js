@@ -4,23 +4,21 @@ import Board from './Board';
 
 class Game extends React.Component {
   renderRestartBtn() {
+    const { restart } = this.props;
     return (
-      <button
-        type="button"
-        className="btnRestart"
-        onClick={() => this.restart()}
-      >
+      <button type="button" className="btnRestart" onClick={() => restart()}>
         Restart
       </button>
     );
   }
 
   render() {
-    const { historyTable } = this.state;
-    const { stepNumber } = this.state;
+    const { historyTable } = this.props;
+    const { stepNumber } = this.props;
     const current = historyTable[stepNumber];
-    const { winner } = this.state;
-    const { winLine } = this.state;
+    const { winner } = this.props;
+    const { winLine } = this.props;
+    const { jumpTo } = this.props;
 
     const moves = historyTable.map((step, move) => {
       const { latestMoveSquare } = step;
@@ -36,7 +34,7 @@ class Game extends React.Component {
           <button
             type="button"
             className={move === stepNumber ? 'move-list-selected' : ''}
-            onClick={() => this.jumpTo(move)}
+            onClick={() => jumpTo(move)}
           >
             {desc}
           </button>
@@ -45,35 +43,41 @@ class Game extends React.Component {
     });
 
     let status;
-    const { xIsNext } = this.state;
+    const { xIsNext } = this.props;
     if (winner) {
       status = `Winner: ${winner}`;
     } else {
       status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
 
-    const { isAscending } = this.state;
+    const { isAscending } = this.props;
     if (!isAscending) {
       moves.reverse();
     }
 
+    const { onSquareClick } = this.props;
+    const { handleSortToggle } = this.props;
+
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board
-            squares={current.squares}
-            onClick={i => this.handleClick(i)}
-            winLine={winLine}
-          />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <div>{this.renderRestartBtn()}</div>
-          <div>
-            <button type="button" onClick={() => this.handleSortToggle()}>
-              {isAscending ? 'descending' : 'ascending'}
-            </button>
-            <ol>{moves}</ol>
+      <div>
+        <h1 className="title">Ban co caro Viet Nam</h1>
+        <div className="game">
+          <div className="game-board">
+            <Board
+              squares={current.squares}
+              onSquareClick={i => onSquareClick(i)}
+              winLine={winLine}
+            />
+          </div>
+          <div className="game-info">
+            <div>{status}</div>
+            <div>{this.renderRestartBtn()}</div>
+            <div>
+              <button type="button" onClick={() => handleSortToggle()}>
+                {isAscending ? 'descending' : 'ascending'}
+              </button>
+              <ol>{moves}</ol>
+            </div>
           </div>
         </div>
       </div>

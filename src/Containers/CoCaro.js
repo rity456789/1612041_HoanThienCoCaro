@@ -8,19 +8,18 @@ import {
 import Game from '../Components/Game';
 
 const mapStateToProps = state => {
-  console.log(state);
   return state;
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSquareClick: id => {
-      dispatch(selectSquare(id));
+    onSquareClick: i => {
+      dispatch(selectSquare(i));
     },
     jumpTo: step => {
       dispatch(goToMove(step));
     },
-    sortMoves: () => {
+    handleSortToggle: () => {
       dispatch(changeMovesOrder());
     },
     restart: () => {

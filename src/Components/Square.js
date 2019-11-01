@@ -3,10 +3,14 @@ import '../App.css';
 
 class Square extends React.PureComponent {
   render() {
-    const { isHighlight, onClick, value } = this.props;
+    const { isHighlight, onSquareClick, value } = this.props;
     const className = `square${isHighlight ? ' highlight' : ''}`;
     return (
-      <button type="button" className={className} onClick={onClick}>
+      <button
+        type="button"
+        className={className}
+        onClick={() => onSquareClick()}
+      >
         {value}
       </button>
     );

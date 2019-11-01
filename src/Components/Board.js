@@ -16,7 +16,7 @@ class Board extends React.Component {
           <Square
             key={20 * i + j}
             value={this.props.squares[20 * i + j]}
-            onClick={() => this.props.onClick(20 * i + j)}
+            onSquareClick={() => this.props.onSquareClick(20 * i + j)}
             isHighlight={winLine && winLine.includes(20 * i + j)}
           />
         );

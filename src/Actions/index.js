@@ -1,18 +1,10 @@
-/*
- * action types
- */
-
 export const SELECT_SQUARE = 'SELECT_SQUARE';
 export const MOVES_ORDER = 'MOVES_ORDER';
 export const GO_TO_MOVE = 'GO_TO_MOVE';
 export const RESTART_GAME = 'RESTART_GAME';
 
-/*
- * action creators
- */
-
-export function selectSquare(index) {
-  return { type: SELECT_SQUARE, index };
+export function selectSquare(i) {
+  return { type: SELECT_SQUARE, i };
 }
 
 export function changeMovesOrder() {

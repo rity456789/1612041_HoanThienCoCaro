@@ -16,7 +16,8 @@
     "no-undef": "off",
     "no-use-before-define": "off",
     "no-param-reassign": "off",
-    "no-case-declarations": "off"
+    "no-case-declarations": "off",
+    "prefer-destructuring": "off"
   },
   "globals": {
     "window": true,
